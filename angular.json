@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "projects": {
+    "the-royal-silk-society": {
+      "projectType": "application",
+      "root": "apps/the-royal-silk-society",
+      "sourceRoot": "apps/the-royal-silk-society/src",
+      "prefix": "dev-danjames",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/the-royal-silk-society",
+            "index": "apps/the-royal-silk-society/src/index.html",
+            "main": "apps/the-royal-silk-society/src/main.ts",
+            "polyfills": "apps/the-royal-silk-society/src/polyfills.ts",
+            "tsConfig": "apps/the-royal-silk-society/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/the-royal-silk-society/src/favicon.ico",
+              "apps/the-royal-silk-society/src/assets"
+            ],
+            "styles": ["apps/the-royal-silk-society/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/the-royal-silk-society/src/environments/environment.ts",
+                  "with": "apps/the-royal-silk-society/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "the-royal-silk-society:build:production"
+            },
+            "development": {
+              "browserTarget": "the-royal-silk-society:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "the-royal-silk-society:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/the-royal-silk-society/src/**/*.ts",
+              "apps/the-royal-silk-society/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/the-royal-silk-society"],
+          "options": {
+            "jestConfig": "apps/the-royal-silk-society/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "the-royal-silk-society-e2e": {
+      "root": "apps/the-royal-silk-society-e2e",
+      "sourceRoot": "apps/the-royal-silk-society-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/the-royal-silk-society-e2e/cypress.json",
+            "tsConfig": "apps/the-royal-silk-society-e2e/tsconfig.e2e.json",
+            "devServerTarget": "the-royal-silk-society:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "the-royal-silk-society:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/the-royal-silk-society-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "the-royal-silk-society"
+}

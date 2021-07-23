@@ -1,0 +1,38 @@
+{
+  "npmScope": "dev-danjames",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "the-royal-silk-society": {
+      "tags": []
+    },
+    "the-royal-silk-society-e2e": {
+      "tags": [],
+      "implicitDependencies": ["the-royal-silk-society"]
+    }
+  }
+}
