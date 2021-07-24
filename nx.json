@@ -33,6 +33,9 @@
     "the-royal-silk-society-e2e": {
       "tags": [],
       "implicitDependencies": ["the-royal-silk-society"]
+    },
+    "ui": {
+      "tags": []
     }
   }
 }
