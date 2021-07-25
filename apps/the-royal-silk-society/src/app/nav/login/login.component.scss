@@ -1,0 +1,16 @@
+.wrapper-input {
+  min-width: 200px;
+  min-height: 2vw;
+  border: black;
+  background: #b49c5d;
+
+}
+
+$wrapper-login: card;
+card {
+  min-width: fit-content;
+  padding-block: 2rem;
+  min-height: fit-content;
+background-size: cover;
+  background: black;
+}

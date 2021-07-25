@@ -9,7 +9,6 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/the-royal-silk-society",
             "index": "apps/the-royal-silk-society/src/index.html",
